@@ -135,4 +135,3 @@ func main() {
 }
 
 // NOTE!
-// jar lu urus error handling, sama kalo bisa rapihin outputnya di terminal biar lebih enak diliat
