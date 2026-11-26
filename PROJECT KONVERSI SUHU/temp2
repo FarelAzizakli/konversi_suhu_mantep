@@ -1,0 +1,138 @@
+package main
+
+import "fmt"
+
+// -----------------------------ini fungsi celcius------------------
+func celcius(temperature float64) (float64, float64) {
+	kelvin := temperature + 273.15
+	fahrenheit := (temperature * 9 / 5) + 32
+	return kelvin, fahrenheit
+}
+
+// -----------------------------kalo ini fungsi kelvin------------------
+func kelvin(temperature float64) (float64, float64) {
+	celcius := (temperature - 273.15)
+	fahrenheit := (temperature-273.15)*9/5 + 32
+	return celcius, fahrenheit
+}
+
+// -----------------------------kalo ini fungsi Fahrenheit------------------
+func fahrenheit(temperature float64) (float64, float64) {
+	celcius := (temperature - 32) * 5 / 9
+	kelvin := (temperature-32)*5/9 + 273.15
+	return celcius, kelvin
+}
+
+// func clearScreen() {
+// 	fmt.Print("\033[2J\033[H")
+// }
+
+func main() {
+	for {
+		var opr string
+		var temp float64
+		fmt.Println("")
+		fmt.Printf("%75s\n", "========TEMPERATURE CONVERTION PROGRAM========")
+		fmt.Printf("%70s\n", "========PROGRAMED BY GROUP12========")
+		fmt.Println("")
+		fmt.Println("1. CELCIUS")
+		fmt.Println("2. KELVIN")
+		fmt.Println("3. FAHRENHEIT")
+		fmt.Println("0. QUIT")
+		fmt.Println("")
+		fmt.Print("SELECT MENU OPTION : ")
+		fmt.Scan(&opr)
+
+		if opr == "0" {
+			break
+		}
+
+		switch opr {
+		// -----------------------------ini make fungsi celcius------------------
+		case "1":
+
+			fmt.Print("ENTER THE TEMPERATURE IN CELCIUS : ")
+			_, err := fmt.Scan(&temp)
+
+			if err != nil {
+				fmt.Println("")
+				fmt.Println("ERROR;INVALID TEMPERATURE VALUE")
+				fmt.Println("")
+				fmt.Println("<PRESS ENTER TO CONTINUE>")
+				fmt.Scanln()
+				fmt.Scanln()
+				// clearScreen()
+				continue
+
+			}
+
+			k, f := celcius(temp)
+
+			fmt.Println("")
+			fmt.Printf("%58s\n", "===CONVERTED TEMPERATURE===")
+			fmt.Printf("KELVIN 		= %.2f\n", k)
+			fmt.Printf("FAHRENHAIT 	= %.2f\n", f)
+
+		// -----------------------------ini make fungsi kelvin------------------
+		case "2":
+			fmt.Print("ENTER THE TEMPERATURE IN KELVIN : ")
+			_, err := fmt.Scan(&temp)
+
+			if err != nil {
+				fmt.Println("")
+				fmt.Println("ERROR;INVALID TEMPERATURE VALUE")
+				fmt.Println("")
+				fmt.Println("<PRESS ENTER TO CONTINUE>")
+				fmt.Scanln()
+				fmt.Scanln()
+				continue
+
+			}
+			c, f := kelvin(temp)
+
+			fmt.Println("")
+			fmt.Printf("%58s\n", "===CONVERTED TEMPERATURE===")
+			fmt.Printf("CELCIUS 	= %.2f\n", c)
+			fmt.Printf("FAHRENHAIT 	= %.2f\n", f)
+
+		//  -----------------------------ini make fungsi fahrenheit------------------
+		case "3":
+			fmt.Print("ENTER THE TEMPERATURE IN FAHRENHAIT : ")
+			_, err := fmt.Scan(&temp)
+
+			if err != nil {
+				fmt.Println("")
+				fmt.Println("ERROR;INVALID TEMPERATURE VALUE")
+				fmt.Println("")
+				fmt.Println("<PRESS ENTER TO CONTINUE>")
+				fmt.Scanln()
+				fmt.Scanln()
+				continue
+
+			}
+
+			c, k := fahrenheit(temp)
+
+			fmt.Println("")
+			fmt.Printf("%58s\n", "===CONVERTED TEMPERATURE===")
+			fmt.Printf("CELCIUS 	= %.2f\n", c)
+			fmt.Printf("KELVIN 		= %.2f\n", k)
+
+		// -----------------------------ERROR HANDLING NIH LU URUS------------------
+		default:
+			// ini buat anuan biar rapih aja
+			fmt.Println("")
+			fmt.Printf("%58s\n", "<INVALID INPUT>")
+			fmt.Println("")
+		}
+		fmt.Println("")
+		fmt.Println("<PRESS ENTER TO CONTINUE>")
+		fmt.Scanln()
+		fmt.Scanln()
+
+	}
+
+}
+
+// NOTE!
+// jar lu urus error handling, sama kalo bisa rapihin outputnya di terminal biar lebih enak diliat
